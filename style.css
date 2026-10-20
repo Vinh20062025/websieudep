@@ -1,0 +1,599 @@
+.music-box {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff0f5;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px #e8a5b555;
+}
+
+.music-box p {
+    color: #d63384;
+    font-weight: bold;
+}
+
+.music-box iframe {
+    border-radius: 12px;
+}
+
+.anh-co-ay {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.loi-dan {
+    color: #d63384;
+    font-size: 18px;
+}
+
+.khung-anh {
+    width: 260px;
+    height: 330px;
+    margin: 20px auto;
+    padding: 10px;
+    background: white;
+    border: 2px solid #ffc1d6;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px #e7548050;
+    overflow: hidden;
+    transform: rotate(-2deg);
+    transition: 0.4s;
+}
+
+.khung-anh:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+
+.khung-anh img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.anh-co-ay h2 {
+    color: #e75480;
+}
+
+.mo-ta-anh {
+    color: #87566b;
+}
+
+/* Hieu ung trai tim bay */
+#hieuUngTim {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.tim-bay {
+    position: absolute;
+    bottom: -40px;
+    font-size: 22px;
+    animation: bayLen linear forwards;
+}
+
+@keyframes bayLen {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+
+.la-thu.hien-thu {
+    display: block !important;
+    animation: hienDan 1s ease;
+}
+
+@keyframes hienDan {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* La thu an ban dau */
+.la-thu {
+    display: none;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #fff0f5;
+    border: 2px solid #ffc1d6;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px #e7548050;
+    color: #87566b;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* Khi bam nut mo qua */
+.la-thu.hien-thu {
+    display: block !important;
+    animation: hienDan 1s ease;
+}
+
+/* Khu vuc cac nut */
+.nut-hanh-dong {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 30px auto;
+}
+
+/* Giao dien chung cho nut */
+.nut-hanh-dong button {
+    position: relative;
+    padding: 14px 28px;
+    border: 1px solid #ffb6d9;
+    border-radius: 40px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff7eb3, #c471ed);
+    box-shadow: 0 5px 20px #e7548050;
+    transition: all 0.3s ease;
+}
+
+/* Hieu ung khi di chuot */
+.nut-hanh-dong button:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 8px 30px #e7548090;
+    background: linear-gradient(135deg, #ff5fa2, #a855f7);
+}
+
+/* Hieu ung khi bam */
+.nut-hanh-dong button:active {
+    transform: scale(0.96);
+}
+
+/* Nut mo qua noi bat hon */
+.nut-mo-qua {
+    min-width: 220px;
+    animation: phatSang 2s infinite alternate;
+}
+
+/* Nut bat nhac */
+.nut-bat-nhac {
+    background: linear-gradient(135deg, #8e9eff, #b58aff) !important;
+    border-color: #d8d3ff !important;
+}
+
+@keyframes phatSang {
+    from {
+        box-shadow: 0 0 12px #ff7eb355;
+    }
+
+    to {
+        box-shadow: 0 0 28px #ff7eb3aa;
+    }
+}
+
+/* Tren dien thoai */
+@media (max-width: 480px) {
+    .nut-hanh-dong {
+        flex-direction: column;
+    }
+
+    .nut-hanh-dong button {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Can chinh khu vuc nut */
+.nut-hanh-dong {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px auto;
+}
+
+/* Giao dien chung */
+.nut-hanh-dong button {
+    padding: 14px 30px;
+    border: 1px solid #ffc1df;
+    border-radius: 40px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    letter-spacing: normal;
+}
+
+/* Nut mo qua mau hong tim */
+.nut-mo-qua {
+    background: linear-gradient(135deg, #ff6fae, #a66cff);
+    box-shadow: 0 0 18px #ff6fae66;
+    animation: sangNut 2s infinite alternate;
+}
+
+/* Nut bat nhac mau xanh tim */
+.nut-bat-nhac {
+    background: linear-gradient(135deg, #788cff, #b66cff);
+    box-shadow: 0 0 18px #a66cff55;
+}
+
+/* Hieu ung khi di chuot */
+.nut-hanh-dong button:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 0 30px #ff8acb99;
+}
+
+.nut-hanh-dong button:active {
+    transform: scale(0.96);
+}
+
+@keyframes sangNut {
+    from {
+        box-shadow: 0 0 10px #ff6fae55;
+    }
+    to {
+        box-shadow: 0 0 25px #ff6faeaa;
+    }
+}
+
+.nut-loi-nhan {
+    background: linear-gradient(135deg, #ff80ab, #ff4081);
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #ff80ab66;
+    transition: 0.3s;
+}
+
+.nut-loi-nhan:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.loi-nhan-bat-ngo {
+    display: none;
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 22px;
+    background: #fff0f5;
+    color: #c2185b;
+    border-radius: 18px;
+    line-height: 1.8;
+    text-align: center;
+    box-shadow: 0 5px 20px #ff80ab44;
+}
+
+/* ANH NEN TOAN TRANG WEB */
+body {
+    background-image: url("https://i.pinimg.com/736x/ae/1a/8b/ae1a8bcc7f7f945c14915c264bf5dc47.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* LOP PHU GIUP NOI DUNG DE DOC */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 240, 245, 0.45);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ===== KHUNG LOI NHAN VA VIDEO NHAC ===== */
+/* KHUNG LOI NHAN VA VIDEO NHAC */
+.loi-nhan-am-nhac {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 30px;
+    box-sizing: border-box;
+
+    background: rgba(255, 245, 250, 0.96);
+    border: 2px solid #ffc1d6;
+    border-radius: 25px;
+    box-shadow: 0 8px 30px rgba(180, 70, 110, 0.2);
+
+    text-align: center;
+    color: #59414b;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.loi-nhan-am-nhac h2 {
+    color: #d6336c;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.cau-noi-dac-biet {
+    color: #c2255c;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+.video-nhac {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 25px auto;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(180, 70, 110, 0.2);
+}
+
+.video-nhac iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.ky-ten {
+    color: #c2255c;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .loi-nhan-am-nhac {
+        margin: 25px 12px;
+        padding: 20px 16px;
+        font-size: 16px;
+    }
+
+    .loi-nhan-am-nhac h2 {
+        font-size: 23px;
+    }
+
+    .cau-noi-dac-biet {
+        font-size: 17px;
+    }
+}
+
+/* SUA LOI CHU BI GIAT, GIAN CACH */
+.loi-nhan-am-nhac h2 {
+    font-family: Arial, sans-serif !important;
+    font-size: 28px !important;
+    font-weight: bold;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    text-transform: none !important;
+    font-kerning: normal;
+    line-height: 1.5;
+}
+
+.loi-nhan-am-nhac p {
+    font-family: Arial, sans-serif;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    text-transform: none !important;
+    line-height: 1.9;
+}
+
+.cau-noi-dac-biet {
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+}
+
+.loi-nhan-am-nhac {
+    overflow-wrap: break-word;
+}
+
+.loi-nhan-am-nhac h2,
+.loi-nhan-am-nhac p {
+    display: block;
+    text-align: center;
+}
+
+
+/* ===== BAT MI DANH TINH THANH VINH ===== */
+
+.loi-tiet-lo {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px 22px;
+    box-sizing: border-box;
+
+    background: rgba(255, 245, 250, 0.96);
+    border: 2px solid #ffc1d6;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(231, 84, 128, 0.2);
+
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #59414b;
+    line-height: 1.9;
+}
+
+/* Tieu de */
+.loi-tiet-lo h2 {
+    color: #d6336c;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Cau bat mi */
+.cau-tiet-lo {
+    color: #c2255c;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Khung anh Thanh Vinh */
+
+/* ANH THANH VINH NHO GON */
+
+/* KHUNG ANH DANH TINH THANH VINH */
+.khung-anh-vinh {
+    width: 440px;
+    max-width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+
+    background: linear-gradient(145deg, #22213f, #17182f);
+    border: 2px solid #ffaddb;
+    border-radius: 36px;
+    box-shadow: 0 0 28px rgba(255, 105, 180, 0.3);
+
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.khung-anh-vinh:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 38px rgba(255, 105, 180, 0.45);
+}
+
+.khung-anh-vinh img {
+    display: block;
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 24px;
+}
+
+/* TRAI TIM DUOI ANH */
+.trai-tim-vinh {
+    display: block;
+    margin-top: 25px;
+    font-size: 28px;
+}
+
+/* HIEN THI TREN DIEN THOAI */
+@media (max-width: 600px) {
+    .khung-anh-vinh {
+        width: 320px;
+        padding: 14px;
+        border-radius: 28px;
+    }
+
+    .khung-anh-vinh img {
+        height: 380px;
+    }
+}
+/* Tren dien thoai */
+@media (max-width: 600px) {
+    .khung-anh-vinh {
+        width: 210px;
+        height: 270px;
+    }
+}
+
+/* Chu ky */
+.ky-ten-vinh {
+    color: #d6336c;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Hien thi tren dien thoai */
+@media (max-width: 600px) {
+    .loi-tiet-lo {
+        margin: 25px 12px;
+        padding: 22px 16px;
+    }
+
+    .loi-tiet-lo h2 {
+        font-size: 24px;
+    }
+
+    .cau-tiet-lo {
+        font-size: 18px;
+    }
+
+    .khung-anh-vinh {
+    width: 210px;
+    height: 270px;
+}
+
+    .ky-ten-vinh {
+        font-size: 21px;
+    }
+}
+
+/* SUA ANH DANH TINH THANH VINH */
+.loi-tiet-lo {
+    width: 100%;
+    max-width: 600px;
+    margin: 35px auto;
+    padding: 25px 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.loi-tiet-lo .khung-anh-vinh {
+    width: 220px !important;
+    height: 280px !important;
+    max-width: 90% !important;
+    padding: 8px !important;
+    margin: 20px auto !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.loi-tiet-lo .khung-anh-vinh img {
+    display: block;
+    width: 100% !important;
+    height: 260px !important;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.trai-tim-vinh {
+    display: block;
+    margin-top: 25px;
+    font-size: 28px;
+}
+
+
+
+.loi-tiet-lo .khung-anh-vinh {
+    width: 200px !important;
+    height: 250px !important;
+    padding: 8px !important;
+    margin: 20px auto !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.loi-tiet-lo .khung-anh-vinh img {
+    display: block;
+    width: 100% !important;
+    height: 230px !important;
+    object-fit: cover;
+}

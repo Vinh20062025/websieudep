@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Món quà dành cho cậu 🌙</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, "Segoe UI", sans-serif;
+            color: white;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 40%, #24345e 0%, transparent 50%),
+                linear-gradient(180deg, #030714, #101a39 65%, #281b40);
+            overflow-x: hidden;
+        }
+
+        /* Bầu trời sao */
+        #bauTroi {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .sao {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #b9d5ff;
+            animation: lapLanh 2s infinite alternate;
+        }
+
+        @keyframes lapLanh {
+            from { opacity: 0.2; transform: scale(0.7); }
+            to { opacity: 1; transform: scale(1.8); }
+        }
+
+        .sao-bang {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, white, transparent);
+            transform: rotate(-35deg);
+            animation: saoBang 4s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes saoBang {
+            0% {
+                transform: translate(0, 0) rotate(-35deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            35% {
+                transform: translate(-250px, 150px) rotate(-35deg);
+                opacity: 0;
+            }
+            100% { opacity: 0; }
+        }
+
+        .noi-dung {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            padding: 55px 20px 35px;
+        }
+
+        .trang-tri {
+            color: #ffb6d9;
+            font-size: 25px;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            margin: 20px 0 12px;
+            color: #ffd2eb;
+            font-size: clamp(30px, 6vw, 54px);
+            font-weight: normal;
+            text-shadow: 0 0 25px #ff70bd;
+        }
+
+        .mo-dau {
+            color: #d7dff7;
+            line-height: 1.9;
+            font-size: 17px;
+        }
+
+        .trang-tri-trai-tim {
+            margin: 25px 0;
+            color: #ff8bc7;
+            font-size: 24px;
+        }
+
+        /* Hộp quà */
+        .hop-qua {
+            position: relative;
+            width: 180px;
+            height: 155px;
+            margin: 75px auto 35px;
+            cursor: pointer;
+            filter: drop-shadow(0 0 25px #ff65ba);
+            transition: transform 0.3s;
+        }
+
+        .hop-qua:hover {
+            transform: scale(1.06);
+        }
+
+        .than-hop {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 160px;
+            height: 105px;
+            border-radius: 5px;
+            background: linear-gradient(100deg, #6c4b91, #211b48, #77508e);
+            border: 1px solid #f6b7e0;
+        }
+
+        .day-doc {
+            position: absolute;
+            top: 0;
+            left: 62px;
+            width: 35px;
+            height: 100%;
+            background: linear-gradient(90deg, #ff8dc9, #ffe0f2, #ed6bb0);
+        }
+
+        .nap-hop {
+            position: absolute;
+            top: 18px;
+            left: 0;
+            width: 180px;
+            height: 28px;
+            border: 1px solid #ffe0f2;
+            border-radius: 5px;
+            background: linear-gradient(#e982c0, #b64f9a);
+            transform-origin: left center;
+            transition: transform 0.9s ease;
+            z-index: 2;
+        }
+
+        .no-qua {
+            position: absolute;
+            top: -25px;
+            left: 65px;
+            width: 50px;
+            height: 35px;
+        }
+
+        .no-qua::before,
+        .no-qua::after {
+            content: "";
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            border: 7px solid #ffc4e4;
+            border-radius: 50%;
+        }
+
+        .no-qua::before { left: 0; }
+        .no-qua::after { right: 0; }
+
+        .hop-qua.da-mo .nap-hop {
+            transform: rotate(-125deg) translateY(-20px);
+        }
+
+        .nut {
+            display: inline-block;
+            padding: 15px 28px;
+            margin: 10px;
+            color: white;
+            background: linear-gradient(100deg, #d64f9b, #8758c5);
+            border: 1px solid #ffd2eb;
+            border-radius: 40px;
+            box-shadow: 0 0 22px #e46ebc66;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nut:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px #ff8bc7;
+        }
+
+        /* Thư bí mật */
+        .la-thu {
+            display: none;
+            max-width: 600px;
+            margin: 35px auto;
+            padding: 30px 24px;
+            border: 1px solid #f7b8e0;
+            border-radius: 20px;
+            background: #10172deF;
+            box-shadow: 0 0 35px #b85ab955;
+            animation: hienDan 1.2s ease;
+        }
+
+        .la-thu h2 {
+            color: #ffb6dc;
+            font-weight: normal;
+        }
+
+        .la-thu p {
+            color: #e3e8ff;
+            font-size: 17px;
+            line-height: 2;
+        }
+
+        .la-thu h3 {
+            color: #ffc5e4;
+            font-weight: normal;
+        }
+
+        @keyframes hienDan {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tim-bay {
+            position: fixed;
+            bottom: -30px;
+            pointer-events: none;
+            animation: bayLen 5s linear forwards;
+        }
+
+        @keyframes bayLen {
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .chan-trang {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            color: #b6c2e6;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .noi-dung { padding-top: 35px; }
+            .la-thu { padding: 24px 17px; }
+            .la-thu p { font-size: 16px; }
+        }
+        .la-thu,
+.la-thu h2,
+.la-thu h3,
+.la-thu p,
+.mo-dau {
+    font-family: Arial, "Segoe UI", sans-serif;
+    letter-spacing: normal;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+}
+.khung-anh-cua-to {
+    width: 220px;
+    margin: 25px auto;
+    padding: 10px;
+    border: 1px solid #ffb6dc;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #222044, #15172e);
+    box-shadow:
+        0 0 15px #ff75c855,
+        0 0 35px #a66bff33;
+    animation: hienDan 1.5s ease;
+}
+
+.khung-anh-cua-to img {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.khung-anh-cua-to .chu-thich-anh {
+    margin: 12px 0 4px;
+    color: #ffc5e4;
+    font-size: 15px;
+    letter-spacing: normal;
+}
+    </style>
+</head>
+
+<body>
+    <div id="bauTroi"></div>
+
+    <main class="noi-dung">
+        <div class="trang-tri">✦ · · · ♡ · · · ✦</div>
+
+        <h1>Một món quà nhỏ</h1>
+
+        <div class="mo-dau">
+            dành riêng cho cậu 🌙
+            <br>
+            Có những điều tớ chưa biết nói thế nào...
+            <br>
+            nên tớ muốn gửi cậu một món quà nhỏ.
+        </div>
+
+        <div class="trang-tri-trai-tim">━━━━━━ ♡ ━━━━━━</div>
+
+        <div class="hop-qua" id="hopQua" onclick="moQua()">
+            <div class="than-hop">
+                <div class="day-doc"></div>
+            </div>
+
+            <div class="nap-hop">
+                <div class="no-qua"></div>
+            </div>
+        </div>
+
+        <p id="huongDan">Chạm vào hộp quà để khám phá nhé ✨</p>
+
+        <button class="nut" id="nutMo" onclick="moQua()">
+            🎁 Mở món quà
+        </button>
+
+        <section class="la-thu" id="laThu">
+            <h2>Gửi cậu, cô gái đặc biệt 💗</h2>
+            <div class="khung-anh-cua-to">
+    <img src="https://giaitritivi.com/wp-content/uploads/2026/01/Anh-cho-ngam-hoa-mang-cam-giac-mem-long.webp" alt="Sieu Dang Yeu">
+    <p class="chu-thich-anh">💗</p>
+</div>
+
+            <p>
+                Giữa hàng tỷ vì sao trên bầu trời,
+                mỗi người đều có một ánh sáng riêng.
+                <br>
+                Và tớ mong cậu sẽ luôn tỏa sáng theo cách
+                đẹp nhất của chính mình.
+            </p>
+
+            <p>
+                Chúc cậu ngày 20/10 thật vui vẻ,
+                luôn được yêu thương, luôn mỉm cười
+                và gặp thật nhiều điều tốt đẹp.
+            </p>
+
+            <p>
+                Mong những ngày phía trước của cậu
+                sẽ dịu dàng như ánh sao đêm nay. 🌟
+            </p>
+
+            <h3>Happy Women's Day · 20/10 💕</h3>
+
+            <button class="nut" onclick="batMi()">
+                Còn một điều nữa... 💌
+            </button>
+
+            <p id="batMi"></p>
+        </section>
+    </main>
+
+    <footer class="chan-trang">
+        Made with a little bit of courage and lots of heart ♡
+    </footer>
+
+    <script>
+        // Tao cac ngoi sao tren bau troi
+        const bauTroi = document.getElementById("bauTroi");
+
+        for (let i = 0; i < 160; i++) {
+            const sao = document.createElement("div");
+            sao.className = "sao";
+
+            sao.style.left = Math.random() * 100 + "%";
+            sao.style.top = Math.random() * 100 + "%";
+            sao.style.animationDelay = Math.random() * 3 + "s";
+            sao.style.animationDuration = (1 + Math.random() * 3) + "s";
+
+            bauTroi.appendChild(sao);
+        }
+
+        // Tao sao bang
+        for (let i = 0; i < 4; i++) {
+            const saoBang = document.createElement("div");
+            saoBang.className = "sao-bang";
+            saoBang.style.left = (30 + Math.random() * 70) + "%";
+            saoBang.style.top = (Math.random() * 45) + "%";
+            saoBang.style.animationDelay = (i * 2.5) + "s";
+
+            bauTroi.appendChild(saoBang);
+        }
+
+        let daMo = false;
+
+        function moQua() {
+            if (daMo) return;
+
+            daMo = true;
+
+            document.getElementById("hopQua")
+                .classList.add("da-mo");
+
+            document.getElementById("huongDan")
+                .style.display = "none";
+
+            document.getElementById("nutMo")
+                .style.display = "none";
+
+            document.getElementById("laThu")
+                .style.display = "block";
+
+            for (let i = 0; i < 35; i++) {
+                setTimeout(taoTim, i * 100);
+            }
+
+            setTimeout(() => {
+                document.getElementById("laThu")
+                    .scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+            }, 300);
+        }
+
+        function taoTim() {
+            const tim = document.createElement("div");
+            tim.className = "tim-bay";
+            tim.textContent = ["💗", "✨", "💖", "🌟"][
+                Math.floor(Math.random() * 4)
+            ];
+
+            tim.style.left = Math.random() * 100 + "vw";
+            tim.style.fontSize = (15 + Math.random() * 20) + "px";
+            tim.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(tim);
+
+            setTimeout(() => tim.remove(), 6500);
+        }
+
+        function batMi() {
+            const noiDung = document.getElementById("batMi");
+
+            noiDung.textContent =
+                "Điều tớ muốn nói là... tớ rất vui vì có thể gửi món quà này đến cậu. Mong cậu sẽ mỉm cười khi đọc nó. 💗";
+
+            noiDung.style.color = "#ffc5e4";
+            noiDung.style.animation = "hienDan 1s ease";
+        }
+    </script>
+
+<!-- BAT MI DANH TINH NGUOI GUI QUA -->
+<section class="loi-tiet-lo">
+    <h2>💌 Còn một điều nữa...</h2>
+
+    <p>
+        Chắc cậu cũng tò mò ai là người đã chuẩn bị món quà này nhỉ?
+    </p>
+
+    <p class="cau-tiet-lo">
+        Và tôi đây, Thành Vinh đây! 😎❤️
+    </p>
+
+    <p>
+        Đây là gương mặt của người đã dành chút thời gian
+        để làm món quà nhỏ này cho cậu đó. 🌷
+    </p>
+
+    <div class="khung-anh-vinh">
+        <img
+        src="./anhdep/8d92a13d-f8eb-4056-9d2b-e6fcd22125da.jpg"
+    alt="Thành Vinh"
+    style="display:block; width:260px; height:340px; max-width:90%; object-fit:cover; margin:20px auto; border-radius:18px;"  
+>
+<img
+    src="./anhdep/8bc0f321-71d5-4cc2-87ca-ad4377dacf0a.jpg"
+    alt="Thành Vinh"
+    style="display:block; width:260px; height:340px; max-width:90%; object-fit:cover; margin:20px auto; border-radius:18px;"
+>
+        <span class="trai-tim-vinh">💗</span>
+    </div>
+
+    <p class="ky-ten-vinh">— Thành Vinh 💗</p>
+</section>
+</body>
+</html>
+
+</body>
+</html>
